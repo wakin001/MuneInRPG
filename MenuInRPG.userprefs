@@ -1,0 +1,15 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MyShader.shader">
+    <Files>
+      <File FileName="Assets/MenuInRPGGame/Menu.cs" Line="256" Column="41" />
+      <File FileName="Assets/MyShader.shader" Line="33" Column="7" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/wangfeng/Documents/workspace/UnityPro/MenuInRPG/Assets/Menu.cs" line="125" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
