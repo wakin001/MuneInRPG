@@ -46,6 +46,13 @@
   <ItemGroup>
      <Compile Include="Assets\MenuInRPGGame\Menu.cs" />
      <None Include="Assets\MyShader.shader" />
+     <None Include="Assets\Animation\Shader\MyShader.shader" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{F334CC4B-2189-161E-EA1C-58088C8183CB}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
+      <Project>{2B55805A-B1A8-5D93-197F-91179C1339F4}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
