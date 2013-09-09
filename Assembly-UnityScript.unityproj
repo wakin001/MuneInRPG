@@ -44,7 +44,8 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Animation\FBX\CharacterControl.js" />
+     <Compile Include="Assets\Animation\FBX\MyCharacterCamera.js" />
+     <Compile Include="Assets\Animation\FBX\MyCharacterController.js" />
      <Compile Include="Assets\SimplePlatform\Scripts\CharacterController_2D.js" />
      <Compile Include="Assets\SimplePlatform\Scripts\TextureButton.js" />
      <None Include="Assets\MyShader.shader" />
