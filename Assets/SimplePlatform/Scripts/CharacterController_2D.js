@@ -14,6 +14,7 @@ private var b_isJumping : boolean;
 private var f_height : float;
 private var f_lastY : float;
 private var b_hasKey : boolean;
+private var mesh : Mesh;
 
 public function Start() : void {
 	//Get restartButton from the Game Scene

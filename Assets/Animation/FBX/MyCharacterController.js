@@ -83,6 +83,12 @@ function Update ()
 	v3_right = new Vector3(v3_forward.z, 0, -v3_forward.x); // -90 degree to the left from the forward direction.
 	
 	// Get horizontal move
+	/**
+	*Returns the value of the virtual axis identified by axisName.
+	 The value will be in the range -1...1 for keyboard and joystick input. If the axis is setup to be 
+	 delta mouse movement, the mouse delta is multiplied by the axis sensitivity and the range is not 
+	 -1...1.
+	*/
 	var f_hor :float = Input.GetAxis("Horizontal");
 	var f_ver : float = Input.GetAxis("Vertical");  // z-axis
 	if (f_ver < 0)

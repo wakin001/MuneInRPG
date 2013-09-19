@@ -6,7 +6,6 @@ public var idleAnimation : AnimationClip;
 public var walkAnimation : AnimationClip;
 public var runAnimation : AnimationClip;
 public var jumpPoseAnimation : AnimationClip;
-public var jumpDownAnimation : AnimationClip;
 
 public var walkMaxAnimationSpeed : float = 0.75;
 public var trotMaxAnimationSpeed : float = 1.0;
@@ -15,7 +14,6 @@ public var jumpAnimationSpeed : float = 1.15;
 public var landAnimationSpeed : float = 1.0;
 
 private var _animation : Animation;
-private var _animator : Animator;
 
 enum CharacterState {
 	Idle = 0,
@@ -92,10 +90,6 @@ private var lastGroundedTime = 0.0;
 
 private var isControllable = true;
 
-// To check if it falls or jump.
-private var current_speed_vertical:float = 0.0;
-private var old_speed_vertical:float = 0.0;
-
 function Awake ()
 {
 	moveDirection = transform.TransformDirection(Vector3.forward);
@@ -103,12 +97,6 @@ function Awake ()
 	_animation = GetComponent(Animation);
 	if(!_animation)
 		Debug.Log("The character you would like to control doesn't have animations. Moving her might look weird.");
-	
-	_animator = GetComponent(Animator);
-	if (!_animator)
-	{
-		Debug.Log("Cannot find animator.");
-	}
 	
 	/*
 public var idleAnimation : AnimationClip;
@@ -171,10 +159,8 @@ function UpdateSmoothedMovementDirection ()
 		// Lock camera for short period when transitioning moving & standing still
 		lockCameraTimer += Time.deltaTime;
 		if (isMoving != wasMoving)
-		{
 			lockCameraTimer = 0.0;
-		}	
-		
+
 		// We store speed and direction seperately,
 		// so that when the character stands still we still have a valid forward direction
 		// moveDirection is always normalized, and we only update it if there is user input.
@@ -221,38 +207,17 @@ function UpdateSmoothedMovementDirection ()
 		}
 		
 		moveSpeed = Mathf.Lerp(moveSpeed, targetSpeed, curSmooth);
-		if (_animator)
-		{
-			Debug.Log("move Speed: " + moveSpeed);
-			_animator.SetFloat("speed", moveSpeed);
-		}
-
+		
 		// Reset walk time start when we slow down
 		if (moveSpeed < walkSpeed * 0.3)
 			walkTimeStart = Time.time;
-			
-		_animator.SetBool("isJump", false);
-		_animator.SetBool("isFall", false);
 	}
 	// In air controls
 	else
 	{
 		// Lock camera while in air
 		if (jumping)
-		{
 			lockCameraTimer = 0.0;
-			
-			_animator.SetBool("isJump", true);
-//			if (current_speed_vertical < old_speed_vertical)
-//			{	// in jumping.
-//				_animator.SetBool("isJump", true);
-//			}
-//			else
-//			{
-//				_animator.SetBool("isFall", true);
-//			}
-//			old_speed_vertical = current_speed_vertical;
-		}
 
 		if (isMoving)
 			inAirVelocity += targetDirection.normalized * Time.deltaTime * inAirControlAcceleration;
@@ -278,7 +243,6 @@ function ApplyJumping ()
 			SendMessage("DidJump", SendMessageOptions.DontRequireReceiver);
 		}
 	}
-	current_speed_vertical = CalculateJumpVerticalSpeed (jumpHeight);
 }
 
 
@@ -390,7 +354,6 @@ function Update() {
 			}
 		}
 	}
-
 	// ANIMATION sector
 	
 	// Set rotation to the move direction
